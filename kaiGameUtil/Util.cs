@@ -1,7 +1,5 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace kaiGameUtil
 {
@@ -100,6 +98,11 @@ namespace kaiGameUtil
             return min.x <= testPoint.x && testPoint.x <= max.x && min.y <= testPoint.y && testPoint.y <= max.y;
         }
         public static readonly Point<int> zero = new Point<int>(0, 0);
+        public static readonly Point<int> up = new Point<int>(0, 1);
+        public static readonly Point<int> right = new Point<int>(1, 0);
+        public static readonly Point<int> down = new Point<int>(0, -1);
+        public static readonly Point<int> left = new Point<int>(-1, 0);
+        public static readonly Point<int>[] cardinalDirections = new Point<int>[] { up, right, down, left };
 
         public static int LayerFloodFill(Layer<int> layer, Point<int> start, int fillColor)
         {
