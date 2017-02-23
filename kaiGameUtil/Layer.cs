@@ -95,7 +95,8 @@ namespace kaiGameUtil
                     }
                     sb.Append((thisY % 10) + " ");
                 }
-                sb.Append(t.ToString());
+                if (t != null) sb.Append(t.ToString());
+                sb.Append(" ");
             });
             return sb.ToString();
         }
