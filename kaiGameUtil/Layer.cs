@@ -118,7 +118,7 @@ namespace kaiGameUtil
                     currentY = y;
                     sb.AppendLine();
                 }
-                sb.Append(t.ToString());
+                sb.Append(t == null ? " " : t.ToString());
             });
             return sb.ToString();
         }
