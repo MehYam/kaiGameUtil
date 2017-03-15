@@ -44,6 +44,21 @@ namespace kaiGameUtil
         {
             return pos.x >= 0 && pos.y >= 0 && pos.x < size.x && pos.y < size.y;
         }
+        public Point<int> Find(T item)
+        {
+            var retval = new Point<int>(-1, -1);
+            for (var y = size.y - 1; y >= 0; --y)
+            {
+                for (var x = 0; x < size.x; ++x)
+                {
+                    if (tiles[x, y].Equals(item))
+                    {
+                        return new Point<int>(x, y);
+                    }
+                }
+            }
+            return retval;
+        }
         /// <summary>
         ///  Iterate the layer, invoking the callback with (x, y, item) arguments
         /// </summary>
