@@ -83,7 +83,7 @@ class Test
     static void TestLayerForEach()
     {
         var layer = new Layer<float>(3, 2);
-        layer.ForEach((x, y, f) =>
+        layer.ForEachFromBottom((x, y, f) =>
         {
             Console.WriteLine("ForEach callback at {0}, {1}", x, y);
         });
