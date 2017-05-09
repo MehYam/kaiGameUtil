@@ -11,7 +11,8 @@ class Test
     static void Main(string[] args)
     {
         TestPoint();
-        TestLayer();
+        TestPerlinLayer();
+        TestLayerForEach();
 
         Console.ReadKey(false);
     }
@@ -64,7 +65,7 @@ class Test
             return string.Format("L:{0}, {1} T:{2:00} |", layer, pos, type);
         }
     }
-    static void TestLayer()
+    static void TestPerlinLayer()
     {
         var noise = new Perlin();
         var layer = new Layer<TestTile>(120,30);
@@ -78,6 +79,14 @@ class Test
         });
 
         Console.WriteLine(layer);
+    }
+    static void TestLayerForEach()
+    {
+        var layer = new Layer<float>(3, 2);
+        layer.ForEach((x, y, f) =>
+        {
+            Console.WriteLine("ForEach callback at {0}, {1}", x, y);
+        });
     }
 }
 
