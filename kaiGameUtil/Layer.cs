@@ -45,7 +45,7 @@ namespace kaiGameUtil
         /// </summary>
         /// <param name="pos">The position to test</param>
         /// <returns></returns>
-        public bool IsValidPosition(Point<int> pos)
+        public bool InBounds(Point<int> pos)
         {
             return pos.x >= 0 && pos.y >= 0 && pos.x < size.x && pos.y < size.y;
         }

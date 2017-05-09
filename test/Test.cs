@@ -82,11 +82,28 @@ class Test
     }
     static void TestLayerForEach()
     {
-        var layer = new Layer<float>(3, 2);
-        layer.ForEachFromBottom((x, y, f) =>
+        var layer = new Layer<float>(2, 3);
+        layer.ForEach((x, y, f) =>
         {
             Console.WriteLine("ForEach callback at {0}, {1}", x, y);
         });
+        Console.WriteLine("-------------");
+        layer.ForEachFromBottom((x, y, f) =>
+        {
+            Console.WriteLine("ForEachFromBottom callback at {0}, {1}", x, y);
+        });
+        Console.WriteLine("-------------");
+
+        System.Action<Layer<float>, Point<int>> boundsCheck = (testLayer, pos) =>
+        {
+            Console.WriteLine("InBounds: {0} -> {1}", pos, testLayer.InBounds(pos));
+        };
+        boundsCheck(layer, new Point<int>(-1, 0));
+        boundsCheck(layer, new Point<int>(0, -1));
+        boundsCheck(layer, new Point<int>(1, 3));
+        boundsCheck(layer, new Point<int>(2, 2));
+        boundsCheck(layer, new Point<int>(0, 0));
+        boundsCheck(layer, new Point<int>(1, 2));
     }
 }
 
