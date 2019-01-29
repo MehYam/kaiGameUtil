@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="RNGTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PointTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
