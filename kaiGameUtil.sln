@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kaiGameUtil", "kaiGameUtil\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ManualTest", "ManualTest\ManualTest.csproj", "{F09C0EDD-4251-4B24-B946-3BDB595AB175}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{72E752B2-F569-43BD-9314-0A3C542DD5A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F09C0EDD-4251-4B24-B946-3BDB595AB175}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F09C0EDD-4251-4B24-B946-3BDB595AB175}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F09C0EDD-4251-4B24-B946-3BDB595AB175}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72E752B2-F569-43BD-9314-0A3C542DD5A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72E752B2-F569-43BD-9314-0A3C542DD5A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72E752B2-F569-43BD-9314-0A3C542DD5A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72E752B2-F569-43BD-9314-0A3C542DD5A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
