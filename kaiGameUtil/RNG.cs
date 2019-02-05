@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace kaiGameUtil
 {
@@ -48,9 +48,50 @@ namespace kaiGameUtil
         }
         public int Next(int min, int max)
         {
+            // KAI: this is not completely accurate, I'm not sure what the actual range is.  For now, it's
+            // good enough.  This stands for the second implementation below.
+            if (max == int.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(max), "Next must be less than int.MaxValue");
+            }
             double r = NextDouble();
-
-            return min + (int)Math.Round(r * (double)(max - min));
+            return min + (int)(r * (double)(max - min + 1));
+        }
+        public int NextIndex(ICollection coll)
+        {
+            return Next(0, coll.Count - 1);
         }
     }
+    // Alternative should you ever need it, 
+    // adapted from https://msdn.microsoft.com/en-us/magazine/mt767700.aspx
+    //public class RNG
+    //{
+    //    private const long a = 25214903917;
+    //    private const long c = 11;
+    //    private long seed;
+    //    public RNG(long seed)
+    //    {
+    //        if (seed < 0)
+    //            throw new Exception("Bad seed");
+    //        this.seed = seed;
+    //    }
+    //    private int next(int bits) // helper
+    //    {
+    //        seed = (seed * a + c) & ((1L << 48) - 1);
+    //        return (int)(seed >> (48 - bits));
+    //    }
+    //    public double Next()
+    //    {
+    //        return (((long)next(26) << 27) + next(27)) / (double)(1L << 53);
+    //    }
+    //    public int Next(int min, int max)
+    //    {
+    //        double r = Next();
+    //        return min + (int)(r * (double)(max - min + 1));
+    //    }
+    //    public int NextIndex(ICollection coll)
+    //    {
+    //        return Next(0, coll.Count - 1);
+    //    }
+    //}
 }
