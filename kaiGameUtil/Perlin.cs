@@ -1,4 +1,4 @@
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     // From https://gist.github.com/Flafla2/f0260a861be0ebdeef76
     public class Perlin

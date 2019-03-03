@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using kaiGameUtil;
+using KaiGameUtil;
 namespace UnitTest
 {
     [TestClass]

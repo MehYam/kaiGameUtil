@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     public static class FileUtil
     {

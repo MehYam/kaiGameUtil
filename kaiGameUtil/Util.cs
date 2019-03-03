@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     public static class Util
     {
@@ -102,6 +102,8 @@ namespace kaiGameUtil
         public static readonly Point<int> right = new Point<int>(1, 0);
         public static readonly Point<int> down = new Point<int>(0, -1);
         public static readonly Point<int> left = new Point<int>(-1, 0);
+        public static readonly Point<int> min = new Point<int>(int.MinValue, int.MinValue);
+        public static readonly Point<int> max = new Point<int>(int.MaxValue, int.MaxValue);
         public static readonly Point<int>[] cardinalDirections = new Point<int>[] { up, right, down, left };
 
         public static int LayerFloodFill(Layer<int> layer, Point<int> start, int fillColor)

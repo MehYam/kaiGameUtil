@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     public sealed class Layer<T>
     {

@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     // Adapted from http://rosettacode.org/wiki/Subtractive_generator#C.23
     public class RNG

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace kaiGameUtil
+namespace KaiGameUtil
 {
     public struct Point<T> : IEquatable<Point<T>>
     {
