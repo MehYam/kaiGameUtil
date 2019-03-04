@@ -96,8 +96,8 @@ namespace UnitTest
             var a = new Point<int>(1, 1);
             var b = new Point<int>(2, 2);
 
-            Assert.AreEqual(Util.Add(a, b), new Point<int>(3, 3));
-            Assert.AreEqual(Util.Add(a, 2), new Point<int>(3, 3));
+            Assert.AreEqual(PointUtil.Add(a, b), new Point<int>(3, 3));
+            Assert.AreEqual(PointUtil.Add(a, 2), new Point<int>(3, 3));
         }
         [TestMethod]
         public void PointAdditionFloat()
@@ -105,8 +105,8 @@ namespace UnitTest
             var a = new Point<float>(.1f, .1f);
             var b = new Point<float>(.2f, .2f);
 
-            Assert.AreEqual(Util.Add(a, b), new Point<float>(.3f, .3f));
-            Assert.AreEqual(Util.Add(a, .2f), new Point<float>(.3f, .3f));
+            Assert.AreEqual(PointUtil.Add(a, b), new Point<float>(.3f, .3f));
+            Assert.AreEqual(PointUtil.Add(a, .2f), new Point<float>(.3f, .3f));
         }
         [TestMethod]
         public void PointSubtractionInt()
@@ -114,8 +114,8 @@ namespace UnitTest
             var a = new Point<int>(1, 1);
             var b = new Point<int>(2, 2);
 
-            Assert.AreEqual(Util.Subtract(a, b), new Point<int>(-1, -1));
-            Assert.AreEqual(Util.Subtract(a, 2), new Point<int>(-1, -1));
+            Assert.AreEqual(PointUtil.Subtract(a, b), new Point<int>(-1, -1));
+            Assert.AreEqual(PointUtil.Subtract(a, 2), new Point<int>(-1, -1));
         }
         [TestMethod]
         public void PointSubtractionFloat()
@@ -123,8 +123,8 @@ namespace UnitTest
             var a = new Point<float>(.1f, .1f);
             var b = new Point<float>(.2f, .2f);
 
-            Assert.AreEqual(Util.Subtract(a, b), new Point<float>(-.1f, -.1f));
-            Assert.AreEqual(Util.Subtract(a, .2f), new Point<float>(-.1f, -.1f));
+            Assert.AreEqual(PointUtil.Subtract(a, b), new Point<float>(-.1f, -.1f));
+            Assert.AreEqual(PointUtil.Subtract(a, .2f), new Point<float>(-.1f, -.1f));
         }
         [TestMethod]
         public void PointMultiplicationInt()
@@ -132,8 +132,8 @@ namespace UnitTest
             var a = new Point<int>(2, 2);
             var b = new Point<int>(4, 4);
 
-            Assert.AreEqual(Util.Multiply(a, b), new Point<int>(8, 8));
-            Assert.AreEqual(Util.Multiply(b, 2), new Point<int>(8, 8));
+            Assert.AreEqual(PointUtil.Multiply(a, b), new Point<int>(8, 8));
+            Assert.AreEqual(PointUtil.Multiply(b, 2), new Point<int>(8, 8));
         }
         [TestMethod]
         public void PointMultiplicationFloat()
@@ -141,8 +141,8 @@ namespace UnitTest
             var a = new Point<float>(.2f, .2f);
             var b = new Point<float>(4, 4);
 
-            Assert.AreEqual(Util.Multiply(a, b), new Point<float>(.8f, .8f));
-            Assert.AreEqual(Util.Multiply(a, 4), new Point<float>(.8f, .8f));
+            Assert.AreEqual(PointUtil.Multiply(a, b), new Point<float>(.8f, .8f));
+            Assert.AreEqual(PointUtil.Multiply(a, 4), new Point<float>(.8f, .8f));
         }
         [TestMethod]
         public void PointDivisionInt()
@@ -150,8 +150,8 @@ namespace UnitTest
             var a = new Point<int>(4, 4);
             var b = new Point<int>(2, 2);
 
-            Assert.AreEqual(Util.Divide(a, b), new Point<int>(2, 2));
-            Assert.AreEqual(Util.Divide(a, 2), new Point<int>(2, 2));
+            Assert.AreEqual(PointUtil.Divide(a, b), new Point<int>(2, 2));
+            Assert.AreEqual(PointUtil.Divide(a, 2), new Point<int>(2, 2));
         }
         [TestMethod]
         public void PointDivisionFloat()
@@ -159,8 +159,8 @@ namespace UnitTest
             var a = new Point<float>(1, 1);
             var b = new Point<float>(2, 2);
 
-            Assert.AreEqual(Util.Divide(a, b), new Point<float>(.5f, .5f));
-            Assert.AreEqual(Util.Divide(a, 2), new Point<float>(.5f, .5f));
+            Assert.AreEqual(PointUtil.Divide(a, b), new Point<float>(.5f, .5f));
+            Assert.AreEqual(PointUtil.Divide(a, 2), new Point<float>(.5f, .5f));
         }
         [TestMethod]
         public void ClampShouldApplyMinimum()

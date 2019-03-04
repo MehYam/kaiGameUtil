@@ -1,10 +1,6 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-using kaiGameUtil;
+using KaiGameUtil;
 
 class Test
 {
@@ -27,14 +23,14 @@ class Test
         Console.WriteLine("IEquatable (should be true): " + (new Point<int>(2, 2) == b));
         Console.WriteLine("IEquatable (should be false): " + (a == b));
         Console.WriteLine("Copy (should be true): " + (new Point<int>(b) == b));
-        Console.WriteLine("Addition ({0}) ({1})", Util.Add(a, b), Util.Add(c, d));
-        Console.WriteLine("Addition ({0}) ({1})", Util.Add(a, 3), Util.Add(c, 3.5f));
-        Console.WriteLine("Subtraction ({0}) ({1})", Util.Subtract(a, b), Util.Subtract(c, d));
-        Console.WriteLine("Subtraction ({0}) ({1})", Util.Subtract(a, 3), Util.Subtract(c, 3.5f));
-        Console.WriteLine("Multiplication ({0}) ({1})", Util.Multiply(a, b), Util.Multiply(c, d));
-        Console.WriteLine("Multiplication ({0}) ({1})", Util.Multiply(b, 3), Util.Multiply(c, 3));
-        Console.WriteLine("Division ({0}) ({1})", Util.Divide(b, b), Util.Divide(c, d));
-        Console.WriteLine("Division ({0}) ({1})", Util.Divide(b, 2), Util.Divide(c, 10));
+        Console.WriteLine("Addition ({0}) ({1})", PointUtil.Add(a, b), PointUtil.Add(c, d));
+        Console.WriteLine("Addition ({0}) ({1})", PointUtil.Add(a, 3), PointUtil.Add(c, 3.5f));
+        Console.WriteLine("Subtraction ({0}) ({1})", PointUtil.Subtract(a, b), PointUtil.Subtract(c, d));
+        Console.WriteLine("Subtraction ({0}) ({1})", PointUtil.Subtract(a, 3), PointUtil.Subtract(c, 3.5f));
+        Console.WriteLine("Multiplication ({0}) ({1})", PointUtil.Multiply(a, b), PointUtil.Multiply(c, d));
+        Console.WriteLine("Multiplication ({0}) ({1})", PointUtil.Multiply(b, 3), PointUtil.Multiply(c, 3));
+        Console.WriteLine("Division ({0}) ({1})", PointUtil.Divide(b, b), PointUtil.Divide(c, d));
+        Console.WriteLine("Division ({0}) ({1})", PointUtil.Divide(b, 2), PointUtil.Divide(c, 10));
     }
     struct TestTile
     {
@@ -94,9 +90,9 @@ class Test
         });
         Console.WriteLine("-------------");
 
-        System.Action<Layer<float>, Point<int>> boundsCheck = (testLayer, pos) =>
+        void boundsCheck(Layer<float> testLayer, Point<int> pos)
         {
-            Console.WriteLine("InBounds: {0} -> {1}", pos, testLayer.InBounds(pos));
+            Console.WriteLine("InBounds: {0} -> {1}", pos, testLayer.Within(pos));
         };
         boundsCheck(layer, new Point<int>(-1, 0));
         boundsCheck(layer, new Point<int>(0, -1));

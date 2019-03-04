@@ -7,58 +7,67 @@ namespace KaiGameUtil
     {
         readonly T[,] tiles;
 
+        public readonly Point<int> min;
         public readonly Point<int> size;
+        public Point<int> max { get { return PointUtil.Subtract(PointUtil.Add(min, size), 1); } }
         public Layer(int width, int height)
         {
             tiles = new T[width, height];
+            this.min = new Point<int>(0, 0);
             this.size = new Point<int>(width, height);
+        }
+        public Layer(Point<int> min, Point<int> max)
+        {
+            var tmpMin = new Point<int>(Math.Min(min.x, max.x), Math.Min(min.y, max.y));
+            var tmpMax = new Point<int>(Math.Max(min.x, max.x), Math.Max(min.y, max.y));
+
+            this.min = tmpMin;
+            this.size = PointUtil.Add(PointUtil.Subtract(tmpMax, tmpMin), 1);
+
+            tiles = new T[size.x, size.y];
         }
         public Layer(Layer<T> rhs)
         {
             tiles = new T[rhs.size.x, rhs.size.y];
-            this.size = new Point<int>(rhs.size.x, rhs.size.y);
+            this.min = rhs.min;
+            this.size = rhs.size;
 
             ForEachFromBottom((x, y, tile) =>
             {
-                //KAI: latent bug - this is a shallow copy, which happens to work now because T is always a value type (i.e. struct Tile)
-                tiles[x, y] = rhs.Get(x, y);
+                //KAI: this is a shallow copy.  Not sure how to represent this fact
+                Set(x, y, rhs.Get(x, y));
             });
         }
         public T Get(int x, int y)
         {
-            return tiles[x, y];
+            return tiles[x - min.x, y - min.y];
         }
         public void Set(int x, int y, T t)
         {
-            tiles[x, y] = t;
+            tiles[x - min.x, y - min.y] = t;
         }
         public T Get(Point<int> pos)
         {
-            return tiles[pos.x, pos.y];
+            return Get(pos.x, pos.y);
         }
         public void Set(Point<int> pos, T t)
         {
-            tiles[pos.x, pos.y] = t;
+            Set(pos.x, pos.y, t);
         }
-        /// <summary>
-        /// Returns true if pos is within the bounds of this layer
-        /// </summary>
-        /// <param name="pos">The position to test</param>
-        /// <returns></returns>
-        public bool InBounds(Point<int> pos)
+        public bool Within(Point<int> pos)
         {
-            return pos.x >= 0 && pos.y >= 0 && pos.x < size.x && pos.y < size.y;
+            return Util.Within(pos, min, max);
         }
         public Point<int> Find(T item)
         {
-            var retval = new Point<int>(-1, -1);
+            var retval = PointUtil.Subtract(min, -1);
             for (var y = size.y - 1; y >= 0; --y)
             {
                 for (var x = 0; x < size.x; ++x)
                 {
                     if (tiles[x, y].Equals(item))
                     {
-                        return new Point<int>(x, y);
+                        return PointUtil.Add(new Point<int>(x, y), min);
                     }
                 }
             }
@@ -74,7 +83,7 @@ namespace KaiGameUtil
             {
                 for (var x = 0; x < size.x; ++x)
                 {
-                    callback(x, y, tiles[x, y]);
+                    callback(x + min.x, y + min.y, tiles[x, y]);
                 }
             }
         }
@@ -88,7 +97,7 @@ namespace KaiGameUtil
             {
                 for (var x = 0; x < size.x; ++x)
                 {
-                    callback(x, y, tiles[x, y]);
+                    callback(x + min.x, y + min.y, tiles[x, y]);
                 }
             }
         }
@@ -102,7 +111,7 @@ namespace KaiGameUtil
             {
                 for (var x = y % 2; x < size.x; x += 2)
                 {
-                    callback(x, y, tiles[x, y]);
+                    callback(x + min.x, y + min.y, tiles[x, y]);
                 }
             }
         }
@@ -112,7 +121,7 @@ namespace KaiGameUtil
             {
                 for (var x = 0; x < size.x; ++x)
                 {
-                    tiles[x, y] = callback(x, y, tiles[x, y]);
+                    tiles[x, y] = callback(x + min.x, y + min.y, tiles[x, y]);
                 }
             }
         }
@@ -122,7 +131,7 @@ namespace KaiGameUtil
             {
                 for (var x = 0; x < size.x; ++x)
                 {
-                    tiles[x, y] = callback(x, y);
+                    tiles[x, y] = callback(x + min.x, y + min.y);
                 }
             }
         }

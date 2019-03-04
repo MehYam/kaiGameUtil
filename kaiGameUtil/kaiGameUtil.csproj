@@ -13,6 +13,6 @@
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>rem copy $(TargetDir)\$(TargetFileName) C:\source\unity\PvT3D\Assets</PostBuildEvent>
-    <Version>2.0.0.2</Version>
+    <Version>2.0.0.3</Version>
   </PropertyGroup>
 </Project>
